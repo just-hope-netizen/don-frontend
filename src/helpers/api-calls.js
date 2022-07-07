@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-const devUrl = 'http://localhost:2000/'
+// const developmentUrl = 'http://localhost:2000/'
+const productionUrl = 'https://don-remolo-server.herokuapp.com/'
 
 //auth and verify
 export async function register(data) {
   try {
-    const res = await axios.post(`${devUrl}auth/register`, data);
+    const res = await axios.post(`${productionUrl}auth/register`, data);
     return res
   } catch (err) {
     return err.response
@@ -13,7 +14,7 @@ export async function register(data) {
 }
 export async function verifyUser(userId, uniqueString) {
   try {
-    const res = await axios.get(`${devUrl}auth/verify/${userId}/${uniqueString}`);
+    const res = await axios.get(`${productionUrl}auth/verify/${userId}/${uniqueString}`);
     return res
   } catch (err) {
     return err.response
@@ -23,7 +24,7 @@ export async function verifyUser(userId, uniqueString) {
 export async function login(email, password) {
 
   try {
-    const res = await axios.post(`${devUrl}auth/login`, {
+    const res = await axios.post(`${productionUrl}auth/login`, {
       email,
       password,
     });
@@ -37,7 +38,7 @@ export async function login(email, password) {
 export async function verifyToken(user, config) {
   try {
     const res = await axios.post(
-      `${devUrl}auth/token`,
+      `${productionUrl}auth/token`,
       user,
       config
     );
@@ -53,7 +54,7 @@ export async function verifyToken(user, config) {
 //products
 export async function getProducts() {
     try {
-      const res = await axios.get(`${devUrl}products`);
+      const res = await axios.get(`${productionUrl}products`);
       return res;
     } catch (err) {
       return err.response
@@ -62,7 +63,7 @@ export async function getProducts() {
 }
 export async function searchProduct(data) {
     try {
-      const res = await axios.get(`${devUrl}products?product=${data}`);
+      const res = await axios.get(`${productionUrl}products?product=${data}`);
       return res;
     } catch (err) {
       return err.response
@@ -72,7 +73,7 @@ export async function searchProduct(data) {
 
 export async function findProduct(productId) {
   try {
-    const res = await axios.get(`${devUrl}products/find/${productId}`);
+    const res = await axios.get(`${productionUrl}products/find/${productId}`);
     return res
   } catch (err) {
     return err.response
@@ -81,7 +82,7 @@ export async function findProduct(productId) {
 
 export async function updateProduct(productId, data, config) {
   try {
-    const res = await axios.put(`${devUrl}products/${productId}`,data , config);
+    const res = await axios.put(`${productionUrl}products/${productId}`,data , config);
     return res
   } catch (err) {
     return err.response
@@ -91,7 +92,7 @@ export async function updateProduct(productId, data, config) {
 export async function createProduct(data, config) {
   try {
     const res = await axios.post(
-      `${devUrl}products`,
+      `${productionUrl}products`,
       data,
       config
     );
@@ -103,7 +104,7 @@ export async function createProduct(data, config) {
 
 export async function getProductByCategory(productType) {
   try {
-    const res = axios.get(`${devUrl}products?category=${productType}`);
+    const res = axios.get(`${productionUrl}products?category=${productType}`);
     return res;
   } catch (err) {
     return err.response
@@ -112,7 +113,7 @@ export async function getProductByCategory(productType) {
 
 export async function deleteProduct(productId, config) {
   try {
-    const res = await axios.delete(`${devUrl}products/${productId}`, config);
+    const res = await axios.delete(`${productionUrl}products/${productId}`, config);
     return res
   } catch (err) {
     return err.response
@@ -125,7 +126,7 @@ export async function deleteProduct(productId, config) {
 export async function createOrder(data, config) {
   try {
     const res = await axios.post(
-      `${devUrl}orders`,
+      `${productionUrl}orders`,
       data,
       config
     );
@@ -138,7 +139,7 @@ export async function createOrder(data, config) {
 export async function getOrders(config) {
   try {
     const res = await axios.get(
-      `${devUrl}orders`,
+      `${productionUrl}orders`,
       config
     );
     return res
@@ -149,7 +150,7 @@ export async function getOrders(config) {
 export async function getOrder(userId, config) {
   try {
     const res = await axios.get(
-      `${devUrl}orders/find/${userId}`,
+      `${productionUrl}orders/find/${userId}`,
       config
     );
     return res
@@ -159,7 +160,7 @@ export async function getOrder(userId, config) {
 }
 export async function deleteOrder(orderId, userId, config) {
   try {
-    const res = await axios.delete(`${devUrl}orders/${orderId}/${userId}`, config);
+    const res = await axios.delete(`${productionUrl}orders/${orderId}/${userId}`, config);
     return res
   } catch (err) {
     return err.response
@@ -172,7 +173,7 @@ export async function deleteOrder(orderId, userId, config) {
 // user
 export async function deleteUserAccount(userId, headers) {
     try {
-    const res =  await axios.delete(`${devUrl}users/${userId}`, headers);
+    const res =  await axios.delete(`${productionUrl}users/${userId}`, headers);
     return res
     } catch (err) {
       return err.response;
@@ -182,7 +183,7 @@ export async function deleteUserAccount(userId, headers) {
 
 export async function editProfile(userId, data, config) {
     try {
-    const res =  await axios.put(`${devUrl}users/${userId}`, data, config);
+    const res =  await axios.put(`${productionUrl}users/${userId}`, data, config);
     return res
     } catch (err) {
       return err.response
