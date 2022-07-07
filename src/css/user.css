@@ -1,0 +1,389 @@
+.input-wrapper,
+.res-container,
+.nav-container,
+.under-constru-wrapper,
+.edit-product-container,
+.edit-details-container > header,
+.add-product-container > header,
+.products-container > header,
+.orders-container > header,
+.under-constru-container > header,
+.change-password-container > header,
+.user-account-container > header .orderId-container,
+.delete-acc-container,
+.user-account-container > header,
+.sign-up-container > header,
+.sign-in-container > header,
+.form-navigator-container,
+.google-icon-container,
+.google-link,
+.line-break-container {
+  display: flex;
+}
+
+.sign-up-form,
+.sign-in-form,
+.add-product-form,
+.change-password-form,
+.edit-details-form,
+.res-img,
+.res-img-wrapper,
+.orders-details,
+.modify-btn,
+.proceed-btn,
+.form-btn {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.input-wrapper,
+.add-product-form > input,
+.change-password-form > input,
+.edit-details-form > input {
+  background-color: #f7f7f7;
+  height: 55px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: 2px solid #dfdfdf;
+}
+
+.form-label {
+  opacity: 1;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.input-wrapper > button {
+  background: none;
+}
+
+.nav-container, .res-container{
+  width: 100%;
+}
+.sign-up-form > div,
+.sign-in-form > div,
+.orders-details > div,
+.add-product-form > input,
+.change-password-form > input,
+.edit-details-form > input {
+  margin-bottom: 20px;
+}
+.add-product-form,
+.change-password-form,
+.orders-details,
+.edit-details-form {
+  padding: 20px;
+}
+
+.sign-up-form > div > span {
+  opacity: 0.7;
+  font-size: 12px;
+  color: orangered;
+}
+
+.form-btn,
+.proceed-btn,
+.modify-btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  height: 55px;
+  background-color: black;
+  color: white;
+  font-weight: 700;
+  margin: 60px 0 20px 0;
+  text-transform: uppercase;
+}
+.form-btn.btn,
+.proceed-btn.btn{
+  color: #f68b1e;
+}
+.modify-btn{
+  color: #000;
+  font-weight: 100;
+  background: none;
+  border: 1px solid black ;
+}
+.form-btn:focus {
+  opacity: 0.6;
+}
+.password-btn {
+  margin: 0 0 0 auto;
+}
+.password-visible {
+  width: 20px;
+}
+.cancel-btn,
+.confirm-btn {
+  background: transparent;
+  padding: 0.5rem 1rem;
+  color: hsl(360, 67%, 44%);
+  border: 1px solid hsl(360, 67%, 44%);
+  margin-top: 1.25rem;
+  border-radius: 0.25rem;
+}
+.confirm-btn:hover {
+  background: hsl(360, 71%, 66%);
+  color: hsl(360, 67%, 44%);
+  border-color: hsl(360, 71%, 66%);
+}
+.cancel-btn {
+  border-color: #645cff;
+  color: #645cff;
+  margin-right: 15px;
+}
+.cancel-btn:hover {
+  color: #fff;
+  background-color: #645cff;
+}
+
+.modal {
+  position: fixed;
+  top: 30%;
+  left: calc(50% - 200px);
+  z-index: 10;
+  background: #fff;
+  width: 80vw;
+  max-width: 500px;
+  border-radius: 0.25rem;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.edit-details-container,
+.products-container,
+.add-product-container,
+.change-password-container,
+.orders-container,
+.user-account-container {
+  height: fit-content;
+  margin: 30px 20px;
+  border-radius: 16px;
+  border: 1px solid #ddd;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+.user-nav {
+  display: inline-flex;
+  flex-direction: column;
+  margin: 30px 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+  min-width: max-content;
+}
+.user-nav-item {
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 20px;
+  color: #333;
+  opacity: 0.8;
+}
+.user-nav-item:hover,
+.focus {
+  background-color: #ddd;
+  opacity: 1;
+}
+.user-nav > h2 {
+  text-align: center;
+}
+.user-nav-btn,
+.order-btn,
+.delete-product-btn,
+.delete-acc-container > a,
+.delete-acc-container > button,
+.edit-product-btn {
+  background: none;
+  font-weight: 500;
+  padding: 5px;
+  border-radius: 5px;
+  color: #f68b1e;
+  margin-bottom: 10px;
+}
+.edit-product-btn{
+  margin-left: 15px;
+}
+.delete-acc-container > button {
+  border: 1px solid red;
+  color: red;
+}
+
+.user-nav-btn:hover,
+.order-btn:hover,
+.delete-acc-container > a:hover,
+.delete-acc-container > button:hover,
+.delete-product-btn:hover,
+.edit-product-btn:hover {
+  background-color: #f7d8bc;
+}
+.line-break {
+  display: block;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.user-nav-icon,
+.edit-icon {
+  width: 24px;
+  margin-right: 5px;
+}
+.res-container,
+.res-img-wrapper,
+.products-main,
+.edit-details-container > header,
+.add-product-container > header,
+.products-container > header,
+.orders-container > header,
+.under-constru-container > header,
+.change-password-container > header,
+.user-account-container > header {
+  padding: 10px 20px;
+}
+.heading {
+  font-weight: 100;
+  text-transform: uppercase;
+}
+.sign-up-container > header,
+.sign-in-container > header,
+.google-icon-container,
+.google-link,
+.line-break-container,
+.form-navigator-container {
+  align-items: center;
+  margin-bottom: 40px;
+}
+.sign-up-container > header,
+.sign-in-container > header,
+.orderId-container,
+.delete-acc-container
+{
+  justify-content: space-between;
+}
+.delete-acc-container > a{
+  padding-left: 0;
+}
+.google-icon-container, .res-container {
+  flex-direction: column;
+}
+.google-link {
+  width: 250px;
+  padding: 20px;
+  background-color: #ddd;
+  text-decoration: none;
+  border-radius: 7px;
+}
+.google-link > span {
+  margin-left: 10px;
+  color: #645cff;
+}
+.line-break-container,
+.under-constru-wrapper,
+.under-constru-container,
+.form-navigator-container {
+  width: 100%;
+  justify-content: center;
+}
+.edit-product-container{
+  justify-content: flex-end;
+}
+.under-constru-wrapper{
+  margin-top: 10px;
+}
+.line-break-container > span {
+  width: 25%;
+}
+.line-break-container > h2 {
+  margin: 0 10px;
+  font-weight: 100;
+}
+.form-navigator {
+  margin: 0 3px;
+  color: #645cff;
+}
+.user-account-container > header,
+.file-container,
+.switch-wrapper,
+.user-details-parent {
+  display: flex;
+  align-items: center;
+}
+.user-account-container > div {
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+.user-details-parent {
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.username,
+.order-text {
+  color: #000;
+  opacity: 1;
+  margin-bottom: 10px;
+}
+
+.orders-details,
+.file-input-btn,
+.file-input-img,
+.confirmation-container {
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+.confirmation-container, .gen-details-container {
+  margin: auto;
+  padding: 30px;
+}
+.confirmation-container > header,
+.confirmation-container > footer,
+.confirmation-container > div {
+  text-align: center;
+}
+.confirmation-container > footer,
+.verify-msg-container,
+.confirmation-container > div {
+  margin-top: 30px;
+}
+.icon.confirmation {
+  width: 100px;
+  height: 100px;
+}
+ .file-input-btn, .file-input-img{
+  max-width: 300px;
+  width: 100%;
+  height: 200px;
+ }
+
+.file-input-img{
+  object-fit: cover;
+  cursor: pointer;
+}
+.mobile-navigator.hide,
+.mobile-header.hidden,
+.hidden,
+.file-input,
+.drop-btn {
+  display: none;
+}
+
+.product-form-wrapper > h4 {
+  margin-bottom: 10px;
+}
+.search-criteria{
+  font-weight: 100;
+}
+.search-criteria > span {
+  font-weight: 700;
+}
+.file-input-btn.props,
+.file-input-img.props{
+margin: 20px ;
+}
+.icon.switch{
+  background-image: url('../assets/svg/switch.svg');
+}

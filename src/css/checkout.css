@@ -1,0 +1,187 @@
+.cart-item,
+.cart-item > div,
+.cart-item > div > div,
+.list-total-container,
+.list-total-container > div,
+.customer-details-container > header,
+.dropdown-container, .payment-container > header
+ {
+  display: flex;
+}
+.checkout-header,
+.checkout-header ~ section,
+.customer-details-form > input,
+.delivery-form > input,
+.dropdown-container > select {
+  padding: 15px;
+  border: solid thin #e1e1e1;
+}
+.checkout-container{
+  background-color: #eaebeb;
+}
+.customer-details-container > header,
+.customer-details-form > input,
+.dropdown-container > select,
+.list-total-container > div,
+.payment-container > header{
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.checkout-header {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.checkout-header ~ section {
+  display: flex;
+  border-top: none;
+}
+.details-container,
+.cart-summary-container {
+  width: 100%;
+  margin: 10px;
+}
+
+.customer-details-container,
+.cart-container,
+.payment-container {
+  padding: 20px;
+  border-radius: 5px;
+  margin: 10px 0 20px;
+  border: solid thin #e1e1e1;
+  background-color: #fff;
+}
+h4,
+.customer-details-form,
+.delivery-form,
+.cart-multiplier,
+.cart-price-wrapper {
+  font-weight: 500;
+  color: #353535;
+  opacity: 0.9;
+}
+.card-price{
+  color: #a6a6a6;
+}
+.cart-price-wrapper{
+  margin-left: 10px;
+}
+.customer-details-form,
+.delivery-form {
+  margin-top: 15px;
+}
+.dropdown-container, .list-total-container {
+  flex-direction: column;
+}
+
+
+.cart-item {
+  align-items: center;
+  border-bottom: solid thin #e1e1e1;
+}
+.cart-item > img {
+  border-radius: 20px;
+  width: 100px;
+  margin:  20px 0;
+}
+
+.cart-item > div,
+.list-total-container {
+  padding: 10px 40px;
+  width: 100%;
+  justify-content: space-between;
+}
+.list-total-container > h4,
+.list-total-container > span {
+  opacity: 1;
+  font-weight: bold;
+}
+.cart-multiplier {
+  margin: 0 10px;
+}
+.item-title {
+  text-transform: uppercase;
+}
+
+.radio-container {
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio-container input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.checkmark.paypal{
+  margin-top: 8px;
+}
+/* On mouse-over, add a grey background color */
+.radio-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-container input:checked ~ .checkmark {
+  background-color: orangered;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+}
+.icon.complete {
+  background-image: url('../assets/svg/complete.svg');
+}
+.uncomplete {
+  background-image: url('../assets/svg/uncomplete.svg');
+}
+.delivery-container{
+  display: none;
+}
+.total-text{
+  font-weight: 700;
+}

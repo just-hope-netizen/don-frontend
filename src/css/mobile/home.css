@@ -1,0 +1,41 @@
+@media (max-width: 768px) {
+  .root_only-child > header {
+    position: unset !important;
+    will-change: unset !important;
+  }
+
+  .menu-btn {
+    margin-right: 30px;
+  }
+  .nav-span {
+    padding-bottom: 10px;
+  }
+
+  .card-container {
+    position: absolute;
+    top: 40px;
+  }
+  .mobile-backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    transition: width 0.4ms ease-in-out;
+  }
+  .mobile-backdrop.slide {
+    width: calc(100% - 345px);
+  }
+  .main-search-section {
+    display: none !important;
+  }
+  div.cart-btn-container {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+  }
+}

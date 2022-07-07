@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('./css/mobile/mobile.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* safari workaround */
+html,
+body,
+#root,
+.root_only-child,
+.pc-header {
+  height: 100%;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  
+}
+ #root {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .root_only-child {
+    display: inherit;
+  width: 100%;
+  max-width: 1440px;
+  flex-direction: row;
+  overflow-x: auto;  
+}
+.root_only-child > header{
+  position: sticky;
+  top: 0;
+  will-change: transform;
+}
+.main,
+aside, 
+.checkout-container, .sign-up-container
+, .sign-in-container{
+  width: 100%;
+  padding: 30px 20px;
+  height: fit-content;
+}
+.main {
+  max-width: 910px;
+  min-width: 650px;
+}
+
+aside {
+  max-width: 440px;
+  min-width: 300px;
+  background-color: #f6f6f6;
+}
+button{
+  border-width: 0;
+  cursor: pointer;
+  background: none;
+}
+.btn--rotate {
+  transform: rotateY(180deg);
+}
+
+img {
+  object-fit: cover;
+}
+input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: none;
+}
+/*hack for browser autofill background color*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+ul {
+  margin-block-start: unset;
+  margin-block-end: unset;
+  padding-inline-start: unset;
+}
+h4 {
+  font-weight: 500;
+  color: #353535;
+}
+h4::first-letter{
+  text-transform: uppercase;
+}
+input[type='search'] {
+  margin: 0 10px;
+}
+a{
+  text-decoration: none;
+}
+.loader {
+  border: 3px solid #f3f3f3; 
+  border-top: 3px solid orangered; 
+  border-radius: 50%;
+  margin: 90px auto;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

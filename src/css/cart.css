@@ -1,0 +1,83 @@
+
+.delete-btn-parent,
+.card,
+.card-details,
+.total-amount-parent,
+.cart-content-container,
+.card-content-wrapper {
+  display: flex;
+  width: 100%;
+}
+.card-quantity-wrapper{
+  display: flex;
+}
+.delete-btn-parent,
+.card-details,
+.total-amount-parent {
+  justify-content: space-between;
+}
+
+.delete-btn-parent {
+  margin-top: 20px;
+}
+.card {
+  height: 135px;
+  padding: 12.5px 13px;
+  border-radius: 16px;
+}
+.card-img {
+  width: 110px;
+  height: 110px;
+  border-radius: 16px;
+  margin: 0 13px 0 0;
+}
+.card-text {
+    line-height: 20px;
+}
+.cart-content-container, .card-content-wrapper {
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cart-content-container{
+  margin: 10px 0  20px 0;
+}
+
+.checkout-btn {
+  background-color: #5c5c5c;
+  border-radius: 50px;
+  height: 60px;
+  width: 100%;
+  color: #fff;
+  font-weight: 600;
+}
+.delete-btn-parent > h4 {
+  font-weight: 600;
+  font-size: 20px;
+  height: 30px;
+  line-height: 30px;
+  opacity: 1;
+
+}
+.card-quantity-wrapper {
+    height: 31px;
+    width: fit-content;
+    background-color: #EBEBEB;
+    padding: 5px 5px 5px 10px;
+    border-radius: 9px;
+  }
+  
+  .card-quantity-wrapper > button{
+    background: none;
+  }
+  .card-quantity{
+    margin-right: 10px;
+  }
+  .empty-cart-container{
+    padding: 40px 10px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 9px;
+}
+.total-amount-parent, .total-amount-parent ~ h6, .checkout-btn {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,147 @@
+.main-search-section,
+.main-form-wrapper,
+.main-form-wrapper > form,
+.category-nav-item-list,
+.card-parent,
+.category-item-link {
+  display: flex;
+  width: 100%;
+}
+.main-search-section {
+  flex-direction: column;
+}
+.main-form-wrapper {
+  background-color: #dfdfdf;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+.category-nav-item-list {
+  justify-content: space-between;
+  border-bottom: 0.1px solid #dfdfdf;
+  margin: 30px 0 20px;
+}
+.category-item-link {
+  padding-bottom: 10px;
+}
+.category-item-link > span {
+  margin-left: 10px;
+}
+
+.card-parent {
+  flex-wrap: wrap;
+}
+.card-item {
+  padding: 10px;
+  width: 33.3%;
+}
+.card {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  margin: 1rem 20px 1rem 0;
+}
+.card.product-wrapper {
+  position: relative;
+  flex-direction: column;
+  height: 260px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.product-wrapper > img {
+  border-radius: 16px 16px 0 0;
+  height: 163px;
+}
+.product-details {
+  margin: 13px 0 0 13px;
+  height: 46px;
+}
+.product-details > h4,
+.card-text {
+  opacity: 1;
+}
+.add-to-cart-btn {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  left: 75%;
+  bottom: 25px;
+  border-radius: 13px;
+  border: 1px solid #dfdfdf;
+  background: none;
+}
+
+.product-btn:focus,
+.add-to-cart-btn:hover {
+  background: #353535;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+.back-btn {
+  display: flex;
+  align-items: center;
+  background-color: orangered;
+  padding: 10px 20px;
+  border-radius: 15px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.category1-price,
+.category1:hover > a > svg > path,
+.category1:hover > a > span,
+.category1-active > a > span,
+.category1-active > a > svg > path{
+  fill: #ff4e4e ;
+  color: #ff4e4e;
+}
+.category1-active{
+  border-bottom: 2px solid #ff4e4e;
+}
+.category2-price,
+.category2:hover > a > svg > path,
+.category2:hover > a > span,
+.category2-active > a > span,
+.category2-active > a > svg > path{
+  fill: #FFA73F;
+  color: #FFA73F;
+  
+}
+.category2-active{
+  border-bottom: 2px solid #FFA73F;
+}
+
+
+.category3-price,
+.category3:hover > a > svg > path,
+.category3:hover > a > span,
+.category3-active > a > span,
+.category3-active > a > svg > path{
+  fill: #50C2E7;
+  color: #50C2E7;
+  
+}
+.category3-active{
+  border-bottom: 2px solid #50C2E7;
+}
+.category4-price,
+.category4:hover > a > svg > path,
+.category4:hover > a > span,
+.category4-active > a > span,
+.category4-active > a > svg > path{
+  fill: #FF678C;
+  color: #FF678C;
+  
+}
+.category4-active{
+  border-bottom: 2px solid #FF678C;
+}
