@@ -57,7 +57,7 @@ const EditProduct = () => {
     return (
       <>
         {editMode ? (
-          productEdit.map((item) => (
+          productEdit?.map((item) => (
             <AddProduct
               key={item._id}
               id={item._id}
@@ -73,7 +73,7 @@ const EditProduct = () => {
           <ProductsContainer>
             {' '}
             <ul className='card-parent'>
-              {products.map((item) => (
+              {products?.map((item) => (
                 <ProductItem
                   key={item._id}
                   id={item._id}

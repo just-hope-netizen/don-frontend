@@ -11,6 +11,12 @@
     padding-bottom: 10px;
   }
 
+.card.product-wrapper {
+  height: 300px;
+}
+.product-wrapper > img {
+  height: 200px;
+}
   .card-container {
     position: absolute;
     top: 40px;

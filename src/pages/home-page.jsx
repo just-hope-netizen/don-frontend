@@ -41,13 +41,13 @@ const HomePage = () => {
 
   return (
     <>
+        <Cart />
       <MobileHeader
         className={`mobile-header ${show ? null : 'hidden'}`}
         onClick={() => {
           setSearchForProduct(true);
         }}
       />
-      <Cart />
       <section className='main'>
         <div className='main-search-section'>
           <SearchForm

@@ -20,7 +20,7 @@ const ProductItem = (props) => {
   }, [location, priceClass]);
   
   return (
-    <li className={`card-item mobile ${props.className}`}>
+    <li className={`card-item mobile ${props.className}`} id='card'>
       <div className={`card product-wrapper`}>
         <img src={props.image} alt={props.title} />
         <div className='product-details'>

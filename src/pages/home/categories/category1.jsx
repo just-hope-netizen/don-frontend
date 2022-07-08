@@ -14,7 +14,6 @@ const Category1 = () => {
           setloadedProducts(res.data);
           setIsLoading(false);
         }else{
-
           toast.error('Something went wrong, we are working on it.');
         }
 

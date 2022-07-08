@@ -10,8 +10,7 @@ const dispatch = useDispatch()
 
   return (
     <ul className={props.className ? props.className : 'card-parent'}>
-      
-      {props.products.map(product => 
+      {props.products?.map(product => 
           <ProductItem
             key={product._id}
             id={product._id}
