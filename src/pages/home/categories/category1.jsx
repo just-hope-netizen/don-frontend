@@ -18,7 +18,7 @@ const Category1 = () => {
     getProductByCategory('pizza')
       .then((res) => {
         console.log(res);
-        if (res.status === 200) {
+        if (res.data.length > 0) {
           setloadedProducts(res.data);
           setIsLoading(false);
         } else {
@@ -39,9 +39,9 @@ const Category1 = () => {
             <ProductItem
               key={product._id}
               id={product._id}
-              image={`data:${product.image.contentType};base64,${convertBuffer(
-                product.image.data.data
-              )}`}
+              // image={`data:${product.image.contentType};base64,${convertBuffer(
+              //   product.image.data.data
+              // )}`}
               title={product.title}
               price={product.price}
             >
