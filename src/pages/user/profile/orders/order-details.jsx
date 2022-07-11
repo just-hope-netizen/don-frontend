@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { deleteOrder, getOrder } from '../../../../helpers/api-calls';
-import { convertBuffer } from '../../../../helpers/functions';
 
 const OrderDetails = (props) => {
   const [orders, setOrders] = useState([]);
@@ -44,15 +43,19 @@ const OrderDetails = (props) => {
             <div>
               <h4 className='order-text'>Order Id</h4> <h4>{detail._id}</h4>
             </div>
-          {props ? null :  <button
-              className='order-btn'
-              type='button'
-              onClick={() => {
-                setShowProducts(!showProducts);
-              }}
-            >
-              {showProducts ? 'Close Ordered Products' : 'See Ordered Products'}
-            </button>}
+            {props ? null : (
+              <button
+                className='order-btn'
+                type='button'
+                onClick={() => {
+                  setShowProducts(!showProducts);
+                }}
+              >
+                {showProducts
+                  ? 'Close Ordered Products'
+                  : 'See Ordered Products'}
+              </button>
+            )}
             <div className='delete-acc-container'>
               <button
                 onClick={() => {
@@ -82,7 +85,7 @@ const OrderDetails = (props) => {
           </div>
           <div>
             <h4 className='order-text'>Total</h4>
-            <h4>{detail.amount}</h4>
+            <h4>$ {detail.amount}</h4>
           </div>
         </div>
       ))}
@@ -94,9 +97,7 @@ const OrderDetails = (props) => {
             i.products.map((product) => (
               <li key={product._id} className='cart-item'>
                 <img
-                  src={`data:${
-                    product.productId.image.contentType
-                  };base64,${convertBuffer(product.productId.image.data.data)}`}
+                  src={product.productId.image.url}
                   alt={product.productId.title}
                 />
                 <div>

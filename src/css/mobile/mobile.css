@@ -48,6 +48,9 @@
     white-space: nowrap;
     font-size: smaller;
   }
+  .add-to-cart-btn{
+    left: 70%;
+  }
 }
 @media (max-width: 515px) {
   .category-item-link > span {

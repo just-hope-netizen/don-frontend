@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { convertBuffer } from '../../helpers/functions';
 
 const DeliveryDetails = (props) => {
   const { cart, totalAmount, totalItemsInCart, subTotal, deliveryFee } =
@@ -13,9 +12,7 @@ const DeliveryDetails = (props) => {
         {cart.map((item) => (
           <li key={item._id} className='cart-item'>
             <img
-              src={`data:${item.image.contentType};base64,${convertBuffer(
-                item.image.data.data
-              )}`}
+              src={item.image.url}
               alt={item.title}
             />
             <div>

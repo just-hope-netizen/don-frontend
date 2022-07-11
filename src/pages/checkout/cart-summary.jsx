@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { convertBuffer } from '../../helpers/functions';
 
 const CartSummary = () => {
     const { cart, subTotal, deliveryFee, totalAmount } = useSelector(
@@ -18,9 +17,7 @@ const CartSummary = () => {
             {cart.map((item) => (
               <li key={item._id} className='cart-item'>
                 <img
-                  src={`data:${item.image.contentType};base64,${convertBuffer(
-                    item.image.data.data
-                  )}`}
+                  src={item.image.url}
                   alt={item.title}
                 />
                 <div>

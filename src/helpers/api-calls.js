@@ -82,7 +82,7 @@ export async function findProduct(productId) {
 
 export async function updateProduct(productId, data, config) {
   try {
-    const res = await axios.put(`${productionUrl}products/${productId}`,data , config);
+    const res = await axios.put(`${productionUrl}products/${productId}`, data , config);
     return res
   } catch (err) {
     return err.response

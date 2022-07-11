@@ -55,8 +55,11 @@ const DetailsContainer = (props) => {
     const addrObject = { country, state, address };
     props.close(false);
     props.open(true);
-    props.payment(true);
     dispatch(addAddress(addrObject));
+    //close on mobile
+    if (window.innerWidth > 768) {
+      props.payment(true);
+    }
   }
 
   return (

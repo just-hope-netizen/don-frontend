@@ -8,11 +8,10 @@ import {
   findProduct,
   getProducts
 } from '../../helpers/api-calls';
-import { convertBuffer } from '../../helpers/functions';
 import ProductItem from '../home/products/product-item';
-import AddProduct from './add-product';
 import EditAndDeleteBtn from './edit&delete-btn';
 import ProductsContainer from './products-container';
+import UpdateProduct from './update-product';
 
 const EditProduct = () => {
   const [products, setProducts] = useState([]);
@@ -58,12 +57,10 @@ const EditProduct = () => {
       <>
         {editMode ? (
           productEdit?.map((item) => (
-            <AddProduct
+            <UpdateProduct
               key={item._id}
               id={item._id}
-              image={`data:${item.image.contentType};base64,${convertBuffer(
-                item.image.data.data
-              )}`}
+              image={item.image.url}
               title={item.title}
               price={item.price}
               category={item.categories[0]}
@@ -77,19 +74,16 @@ const EditProduct = () => {
                 <ProductItem
                   key={item._id}
                   id={item._id}
-                  image={`data:${item.image.contentType};base64,${convertBuffer(
-                    item.image.data.data
-                  )}`}
+                  image={item.image.url}
                   title={item.title}
                   price={item.price}
                   className='edit-card'
                 >
                   <EditAndDeleteBtn
-                  itemId = {item._id}
-                  delete = {deleteHandler}
-                  edit = {editHandler}
+                    itemId={item._id}
+                    delete={deleteHandler}
+                    edit={editHandler}
                   />
-
                 </ProductItem>
               ))}
             </ul>

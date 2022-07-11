@@ -12,7 +12,6 @@ const OrderedProducts = () => {
     //get orders, store details
     getOrders(config).then((res) => {
       // if no order return
-      console.log(res);
       const length = Object.keys(res.data).length;
       if (length <= 0) return;
       setOrders(res.data);

@@ -10,11 +10,14 @@ const Category3 = () => {
    useEffect(() => {
      getProductByCategory('drink')
        .then((res) => {
-         if (res.status === 200) {
+        
+         if (res.data.length > 0) {
            setloadedProducts(res.data);
            setIsLoading(false);
-         } else {
+         } else if (res.status !== 200) {
            toast.error('Something went wrong, we are working on it.');
+         } else {
+           toast.info('No current inventory, try the next section.');
          }
        })
        .catch((err) => toast.error(err));

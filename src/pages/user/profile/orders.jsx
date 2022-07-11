@@ -3,9 +3,7 @@ import OrderHeader from './orders/header';
 import OrderDetails from './orders/order-details';
 
 
-const Orders = (props) => {
-  
-  
+const Orders = () => {
   
   return (
     <article className='orders-container'>

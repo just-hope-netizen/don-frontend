@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import '../css/cart.css';
-import { convertBuffer } from '../helpers/functions';
-import { calculateTotals, clearCart } from '../redux/slices/cart-slice';
 import deleteCart from '../assets/svg/delete-cart.svg';
+import '../css/cart.css';
+import { calculateTotals, clearCart } from '../redux/slices/cart-slice';
 import CartFooter from './cart/cart-footer';
 import CartHeader from './cart/cart-header';
 import CartItems from './cart/cart-items';
@@ -43,9 +42,7 @@ const CartSection = (props) => {
               <CartItems
                 key={item._id}
                 _id={item._id}
-                image={`data:${item.image.contentType};base64,${convertBuffer(
-                  item.image.data.data
-                )}`}
+                image={item.image.url}
                 title={item.title}
                 price={item.price}
               />
