@@ -34,6 +34,7 @@
   .mobile-backdrop.slide {
     width: calc(100% - 345px);
   }
+ 
   .main-search-section {
     display: none !important;
   }

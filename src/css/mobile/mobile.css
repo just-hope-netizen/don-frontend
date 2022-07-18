@@ -59,6 +59,9 @@
   .gen-details-container{
     word-wrap: break-word;
   }
+   .modal{
+    left: 10%;
+  }
 }
 
 @media (max-width: 768px) {
