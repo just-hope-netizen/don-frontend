@@ -1,20 +1,19 @@
 import { useRef, useState } from 'react';
-import {  useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Backdrop from '../../components/backdrop';
 
+import eyeIcon from '../../assets/svg/eye.svg';
 import Logo from '../../components/logo';
 import Modal from '../../components/modal';
 import { register } from '../../helpers/api-calls';
 import {
   checkPassword,
   validateEmail,
-  validateUsername,
+  validateUsername
 } from '../../helpers/validate';
-import google from '../../assets/img/flat-color-icons_google.png';
 import { getDetailsToLogin } from '../../redux/slices/user-slice';
-import eyeIcon from '../../assets/svg/eye.svg';
 
 const SignupPage = (props) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -107,29 +106,7 @@ const SignupPage = (props) => {
         <h1> Sign Up</h1>
       </header>
 
-      {/* remove element in admin page */}
-      {props.adminAuth ? (
-        ''
-      ) : (
-        <div className='google-icon-container'>
-          <Link to={'/development'} className='google-link'>
-            {' '}
-            <img src={google} alt='google icon' />{' '}
-            <span>Sign Up with Google</span>
-          </Link>
-          <div className='line-break-container'>
-            <span>
-              {' '}
-              <hr />
-            </span>
-            <h2>OR</h2>
-            <span>
-              {' '}
-              <hr />
-            </span>
-          </div>
-        </div>
-      )}
+      
 
       <form className='sign-up-form'>
         <label htmlFor='username' className='form-label'>

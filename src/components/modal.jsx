@@ -2,7 +2,6 @@
   return (
       <div className='modal'>
         {props.children}
-        
     </div>
   );
 };

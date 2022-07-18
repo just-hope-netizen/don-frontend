@@ -1,18 +1,16 @@
 import { useRef, useState } from 'react';
-import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-import { getUser } from '../../redux/slices/user-slice';
+import eyeIcon from '../../assets/svg/eye.svg';
+import Logo from '../../components/logo';
+import { login } from '../../helpers/api-calls';
 import {
   checkPassword,
-  validateEmail,
+  validateEmail
 } from '../../helpers/validate';
-import { login } from '../../helpers/api-calls';
-import eyeIcon from '../../assets/svg/eye.svg';
-import google from '../../assets/img/flat-color-icons_google.png';
-import Logo from '../../components/logo';
+import { getUser } from '../../redux/slices/user-slice';
 
 const SigninPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -61,24 +59,7 @@ const SigninPage = () => {
         <h1> Sign In</h1>
       </header>
 
-      <div className='google-icon-container'>
-        <Link to={'/development'} className='google-link'>
-          {' '}
-          <img src={google} alt='google icon' />{' '}
-          <span>Sign In with Google</span>
-        </Link>
-        <div className='line-break-container'>
-          <span>
-            {' '}
-            <hr />
-          </span>
-          <h2>OR</h2>
-          <span>
-            {' '}
-            <hr />
-          </span>
-        </div>
-      </div>
+      
 
       <form className='sign-in-form'>
         <label htmlFor='email' className='form-label'>

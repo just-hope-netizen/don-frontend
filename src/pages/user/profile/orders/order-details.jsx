@@ -21,6 +21,7 @@ const OrderDetails = (props) => {
     } else {
       //get orders, store details
       getOrder(_id, config).then((res) => {
+        console.log(res);
         // if no order return
         const length = Object.keys(res.data).length;
         if (length <= 0) return;

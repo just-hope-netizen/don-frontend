@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react';
 
 const UserNav = (props) => {
   const [admin, setAdmin] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
 
   const { isAdmin, config } = useSelector(
     (store) => store.persistedReducer.user
@@ -65,7 +64,7 @@ const UserNav = (props) => {
               Inbox
             </Link>
           </li>
-          {/* remove routes if user is admin  */}
+          {/* remove route if user is admin  */}
           {admin ? null : (
             <li
               className={`${location.pathname === '/user/orders' && 'focus'}`}
@@ -73,9 +72,7 @@ const UserNav = (props) => {
               <Link
                 to='orders'
                 className='user-nav-item mobile '
-                onClick={() => {
-                  setDropdown(!dropdown);
-                }}
+                onClick={props.onClick}
               >
                 <img
                   src={packageSvg}
