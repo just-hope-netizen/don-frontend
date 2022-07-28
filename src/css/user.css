@@ -37,9 +37,7 @@
 }
 
 .input-wrapper,
-.add-product-form > input,
-.change-password-form > input,
-.edit-details-form > input {
+.add-product-form > input {
   background-color: #f7f7f7;
   height: 55px;
   border-radius: 10px;
@@ -49,7 +47,7 @@
 
 .form-label {
   opacity: 1;
-  display: inline-block;
+  display: block;
   margin-bottom: 10px;
 }
 .input-wrapper > button {
@@ -64,8 +62,7 @@
 .sign-in-form > div,
 .orders-details > div,
 .add-product-form > input,
-.change-password-form > input,
-.edit-details-form > input {
+.input-wrapper {
   margin-bottom: 20px;
 }
 .add-product-form,
@@ -75,10 +72,13 @@
   padding: 20px;
 }
 
-.sign-up-form > div > span {
-  opacity: 0.7;
+.sign-up-form > div > span,
+.error-msg
+ {
+  position: relative;
+  bottom: 20px;
   font-size: 12px;
-  color: orangered;
+  color: red;
 }
 
 .form-btn,
@@ -110,9 +110,7 @@
 .password-btn {
   margin: 0 0 0 auto;
 }
-.password-visible {
-  width: 20px;
-}
+
 .cancel-btn,
 .confirm-btn {
   background: transparent;
@@ -136,7 +134,9 @@
   color: #fff;
   background-color: #645cff;
 }
-
+.back-arrow{
+  color: #000;
+}
 .modal {
   position: fixed;
   top: 30%;
@@ -367,4 +367,7 @@
 }
 .search-criteria > span {
   font-weight: 700;
+}
+.error{
+  border: 2px solid red;
 }

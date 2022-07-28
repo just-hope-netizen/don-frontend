@@ -18,7 +18,7 @@ import userSvg from '../../../../assets/svg/user.svg';
           <li className='nav-item'>
             <Link to='user/account-details' className='slide'>
               <img src={userSvg} alt='user icon' className='nav--img' />
-              <span className={props.className}> Signin/Register</span>
+              <span className={props.className}> Sign in / Dashboard</span>
             </Link>
           </li>
           <li className='nav-item'>

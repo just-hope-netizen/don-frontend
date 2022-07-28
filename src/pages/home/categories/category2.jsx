@@ -1,34 +1,36 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { getProductByCategory } from '../../../helpers/api-calls';
+import { setProduct } from '../../../redux/slices/product-slice';
 import ProductsList from '../products/products-list';
 
  const Category2 = () => {
-    const [getProducts, setloadedProducts] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const { products } = useSelector((store) => store.product);
+    const { empanda } = products;
+    const dispatch = useDispatch();
 
     useEffect(() => {
-      getProductByCategory('empanda')
-        .then((res) => {
+      // for caching
+      if (empanda.length > 0) {
+        return;
+      } else {
+        getProductByCategory('empanda').then((res) => {
           if (res.data.length > 0) {
-            setloadedProducts(res.data);
-            setIsLoading(false);
+            dispatch(setProduct(res.data));
           } else if (res.status !== 200) {
             toast.error('Something went wrong, we are working on it.');
           } else {
             toast.info('No current inventory, try the next section.');
           }
-        })
-        .catch((err) => toast.error(err));
-    }, []);
+        });
+      }
+    }, [dispatch, empanda]);
+   
 
     return (
       <div>
-        {isLoading ? (
-          <div className='loader' />
-        ) : (
-          <ProductsList products={getProducts} />
-        )}
+          <ProductsList products={empanda} />
       </div>
     );
 };

@@ -34,10 +34,7 @@
   .logo-container.mobile {
     display: none;
   }
-  .sign-up-container > header,
-  .sign-in-container > header {
-    justify-content: center;
-  }
+  
   .heading {
     font-size: inherit;
   }
@@ -61,6 +58,7 @@
   }
    .modal{
     left: 10%;
+    top: 20%;
   }
 }
 

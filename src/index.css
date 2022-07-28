@@ -25,14 +25,14 @@ body {
   font-size: 16px;
   
 }
- #root {
-    display: flex;
-    justify-content: center;
+#root {
+  display: flex;
+  justify-content: center;
   }
   
   .root_only-child {
     display: inherit;
-  width: 100%;
+    width: 100%;
   max-width: 1440px;
   flex-direction: row;
   overflow-x: auto;  
@@ -84,10 +84,10 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
-}
-
-ul {
-  margin-block-start: unset;
+  }
+  
+  ul {
+    margin-block-start: unset;
   margin-block-end: unset;
   padding-inline-start: unset;
 }

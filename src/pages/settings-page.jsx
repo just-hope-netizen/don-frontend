@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { verifyToken } from '../helpers/api-calls';
 import restrictImg from '../assets/img/restrict-img.png';
 import packageSvg from '../assets/svg/package.svg';
 import arrowLeftSvg from '../assets/svg/arrowleft.svg';
@@ -10,29 +9,17 @@ import outlineUserSvg from '../assets/svg/outline-user.svg';
 import UserNav from './user/user-nav';
 
 const SettingsPage = () => {
-  const [admin, setAdmin] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
-  const { isAdmin, config } = useSelector(
+  const { isAdmin } = useSelector(
     (store) => store.persistedReducer.user
   );
   const location = useLocation();
   const myRef = useRef();
 
-  useEffect(() => {
-    // verify if user is admin
-    const user = {
-      isAdmin: isAdmin,
-    };
-
-    verifyToken(user, config).then((res) => {
-      if (res.data !== 'true') return;
-      setAdmin(true);
-    });
-  }, [isAdmin, config]);
-
+ 
   function handleClickOutside(e) {
-    if (!myRef.current.contains(e.target)) {
+    if (myRef.current && !myRef.current.contains(e.target)) {
       setDropdown(false);
     }
   }
@@ -42,7 +29,7 @@ const SettingsPage = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  if (admin) {
+  if (isAdmin) {
     return (
       <div className='nav-container' ref={myRef} onClick={handleClickOutside}>
         <button

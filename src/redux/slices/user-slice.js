@@ -21,7 +21,9 @@ const userSlice = createSlice({
       state.username = action.payload.username;
       state.email = action.payload.email;
       state.isAdmin = action.payload.isAdmin;
-      state.config.headers.token = action.payload.accessToken;
+      if (action.payload.accessToken) {
+        state.config.headers.token = action.payload.accessToken;
+      }
     },
     removeUser: (state) => {
       state._id = null;

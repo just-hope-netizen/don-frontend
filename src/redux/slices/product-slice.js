@@ -2,7 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   isLoading: true,
   query: null,
-  
+  products: {
+    pizza: [],
+    empanda: [],
+    drink: [],
+    dessert: []
+  }
 };
 
 const productSlice = createSlice({
@@ -19,9 +24,22 @@ const productSlice = createSlice({
     resetState: (state) => {
       state.isLoading = true
       state.query = null
+    },
+    setProduct: (state, action) => {
+      //use category to set product
+      const category = action.payload[0].categories[0];
+      if (category === 'pizza') {
+        state.products.pizza = action.payload
+      } else if (category === 'empanda') {
+        state.products.empanda = action.payload
+      } else if (category === 'drink'){
+        state.products.drink = action.payload
+      }else {
+        state.products.dessert = action.payload
+      }
     }
   },
 });
 
-export const {  productSearchedFor, resetState, setIsLoading } = productSlice.actions;
+export const { productSearchedFor, resetState, setIsLoading, setProduct } = productSlice.actions;
 export default productSlice.reducer;

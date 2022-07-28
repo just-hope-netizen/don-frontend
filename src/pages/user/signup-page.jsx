@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Backdrop from '../../components/backdrop';
 
-import eyeIcon from '../../assets/svg/eye.svg';
+import { BackArrow, EyeIcon, EyeOffIcon } from '../../assets/svg';
 import Logo from '../../components/logo';
 import Modal from '../../components/modal';
 import { register } from '../../helpers/api-calls';
@@ -16,10 +16,13 @@ import {
 import { getDetailsToLogin } from '../../redux/slices/user-slice';
 
 const SignupPage = (props) => {
+  const [passordError, setPassordError] = useState(false);
+  const [usernameError, setUsernameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [verificationEmail, setVerificationEmail] = useState();
 
-  const navgigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   //reference input value
   const textInput = useRef();
@@ -38,26 +41,29 @@ const SignupPage = (props) => {
     const validatedPassword = checkPassword(enteredPasswordInput);
     const validatedEmail = validateEmail(enteredEmailInput);
 
-    const conditionArray = [
-      validatedUsername,
-      validatedPassword,
-      validatedEmail,
-    ];
-
-    //end if any validation resolves to false
-    if (conditionArray.includes(false)) return;
-
-    const enteredInfo = {
-      username: enteredTextInput,
-      password: enteredPasswordInput,
-      email: enteredEmailInput,
-    };
-    // admin or regular user
-    if (props.adminAuth) {
-      props.adminAuth(enteredInfo);
-      return;
+    if (!validatedUsername) {
+      setUsernameError(true);
+    } else if (!validatedPassword) {
+      setPassordError(true);
+      setUsernameError(false)
+    } else if (!validatedEmail) {
+      setEmailError(true);
+      setUsernameError(false)
+      setPassordError(false)
     } else {
-      auth(enteredInfo);
+      
+      const enteredInfo = {
+        username: enteredTextInput,
+        password: enteredPasswordInput,
+        email: enteredEmailInput,
+      };
+      // admin or regular user
+      if (props.adminAuth) {
+        props.adminAuth(enteredInfo);
+        return;
+      } else {
+        auth(enteredInfo);
+      }
     }
   }
 
@@ -65,7 +71,7 @@ const SignupPage = (props) => {
     register(enteredInfo).then((res) => {
       // respond with the right error message
       //if  email is already in use
-     
+
       if (res.status === 400) {
         const arrayKeys = [{ username: 1 }, { email: 1 }];
         const data = res.data.keyPattern;
@@ -100,76 +106,74 @@ const SignupPage = (props) => {
   return (
     <div className='sign-up-container'>
       <header>
-        <Link to='/'>
-          <Logo className='logo-container mobile' />
+        <Link to='/' className='mobile-navigator hide'>
+          <BackArrow />
         </Link>
-        <h1> Sign Up</h1>
+        <h2 className='heading'>Sign Up</h2>
       </header>
-
-      
 
       <form className='sign-up-form'>
         <label htmlFor='username' className='form-label'>
           Username
         </label>
-        <div className='input-wrapper'>
+        <div className={`input-wrapper ${usernameError && 'error'}`}>
           <input
             type='text'
             name='username'
             id='username'
             ref={textInput}
-            autoComplete='true'
+            
           />
         </div>
+        <span className='error-msg'>
+          {usernameError &&
+            'You have entered an invalid username, username must be more than 3 characters!'}
+        </span>
 
-        <div>
-          <div>
-            <label htmlFor='password' className='form-label'>
-              Password
-            </label>
-          </div>
+        <label htmlFor='password' className='form-label'>
+          Password
+        </label>
 
-          <div className='input-wrapper'>
-            <input
-              type={showPassword ? 'text' : 'password'}
-              name='password'
-              id='password'
-              ref={passwordInput}
-              autoComplete='true'
-            />
+        <div className={`input-wrapper ${passordError && 'error'}`}>
+          <input
+            type={showPassword ? 'text' : 'password'}
+            name='password'
+            id='password'
+            ref={passwordInput}
+            
+          />
 
-            <button
-              type='button'
-              onClick={() => {
-                setShowPassword(!showPassword);
-              }}
-            >
-              <img
-                src={eyeIcon}
-                alt='click to show value'
-                className='password-visible'
-              />
-            </button>
-          </div>
-
-          <span>
-            7 to 15 characters with one numeric value and special character e.g.
-            qwerty123$.
-          </span>
+          <button
+            type='button'
+            onClick={() => {
+              setShowPassword(!showPassword);
+            }}
+          >
+            {showPassword ? <EyeIcon /> : <EyeOffIcon />}
+          </button>
         </div>
+
+        <span className='error-msg'>
+          {passordError &&
+            '7 to 15 characters with one numeric value and special character e.g.qwerty123$.'}
+        </span>
 
         <label htmlFor='email' className='form-label'>
           Email
         </label>
-        <div className='input-wrapper'>
+        <div className={`input-wrapper ${emailError && 'error'}`}>
           <input
             type='email'
             name='email'
             id='email'
             ref={emailInput}
-            autoComplete='true'
+            
           />
         </div>
+        <span className='error-msg'>
+          {emailError &&
+            'You have entered an invalid email, check and try again!'}
+        </span>
         <button className='form-btn' onClick={getUserInfo}>
           Sign Up{' '}
         </button>
@@ -205,7 +209,7 @@ const SignupPage = (props) => {
       {verificationEmail && (
         <Backdrop
           onClick={() => {
-            navgigate('/');
+            navigate('/');
           }}
         />
       )}

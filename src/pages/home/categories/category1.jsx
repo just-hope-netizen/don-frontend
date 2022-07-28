@@ -1,36 +1,38 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { getProductByCategory } from '../../../helpers/api-calls';
+import {
+  setProduct
+} from '../../../redux/slices/product-slice';
 import ProductsList from '../products/products-list';
 
-
 const Category1 = () => {
-  const [getProducts, setloadedProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
+  const { products } = useSelector((store) => store.product);
+  const { pizza } = products;
+  const dispatch = useDispatch();
+  
   useEffect(() => {
-    getProductByCategory('pizza')
-      .then(res => {
+    // for caching
+    if (pizza.length > 0) {
+      return;
+    } else {
+      getProductByCategory('pizza').then((res) => {
         if (res.data.length > 0) {
-          setloadedProducts(res.data);
-          setIsLoading(false);
-        } else if(res.status !== 200){
+          dispatch(setProduct(res.data));
+          
+        } else if (res.status !== 200) {
           toast.error('Something went wrong, we are working on it.');
-        }else{
-          toast.info('No current inventory, try the next section.')
+        } else {
+          toast.info('No current inventory, try the next section.');
         }
-      })
-      .catch((err) => console.log(err));
-  }, []);
+      });
+      }
+    }, [dispatch, pizza]);
 
   return (
     <div>
-      {isLoading ? (
-        <div className='loader' />
-      ) : (
-         <ProductsList products={getProducts} />
-    
-      )}
+        <ProductsList products={pizza} />
     </div>
   );
 };

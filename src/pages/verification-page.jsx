@@ -26,7 +26,6 @@ const VerificationPage = () => {
         className='form-btn'
         onClick={() => {
           verifyUser(userId, uniqueString).then((res) => {
-            console.log(res);
             if (res.data.verified) {
               login(email, password).then((res) => {
                 dispatch(removeDetailsAfterLogin());
@@ -37,6 +36,8 @@ const VerificationPage = () => {
                   dispatch(getUser(res.data));
                 }, 2000);
               });
+            }else{
+              toast.info('Something went wrong, we are on it.')
             }
           });
         }}

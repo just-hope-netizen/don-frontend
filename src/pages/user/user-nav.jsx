@@ -1,17 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 
-import { verifyToken } from '../../helpers/api-calls';
-import { removeUser } from '../../redux/slices/user-slice';
 import inboxSvg from '../../assets/svg/inbox.svg';
 import outlineUserSvg from '../../assets/svg/outline-user.svg';
 import packageSvg from '../../assets/svg/package.svg';
-import { useEffect, useState } from 'react';
+import { removeUser } from '../../redux/slices/user-slice';
 
 const UserNav = (props) => {
-  const [admin, setAdmin] = useState(false);
 
-  const { isAdmin, config } = useSelector(
+  const { isAdmin} = useSelector(
     (store) => store.persistedReducer.user
   );
 
@@ -19,17 +16,7 @@ const UserNav = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    // verify if user is admin
-    const user = {
-      isAdmin: isAdmin,
-    };
-    verifyToken(user, config).then((res) => {
-      if (res.data !== 'true') return;
-      setAdmin(true);
-    });
-  }, [isAdmin, config]);
-
+  
   return (
     <>
       <nav className={props.className}>
@@ -65,7 +52,7 @@ const UserNav = (props) => {
             </Link>
           </li>
           {/* remove route if user is admin  */}
-          {admin ? null : (
+          {isAdmin ? null : (
             <li
               className={`${location.pathname === '/user/orders' && 'focus'}`}
             >

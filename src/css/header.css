@@ -13,7 +13,7 @@ nav,
 }
 
 .mobile-header, .cart-btn-container {
-  padding: 20px;
+  padding: 10px;
   display: none;
 }
 
@@ -67,10 +67,6 @@ span.content.show {
   padding: 20px;
 }
 
-
-.menu-logo {
-  width: 112px;
-}
 
 .menu-text {
   flex-direction: column;
