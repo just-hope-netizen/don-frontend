@@ -11,7 +11,7 @@ import { register } from '../../helpers/api-calls';
 import {
   checkPassword,
   validateEmail,
-  validateUsername
+  validateUsername,
 } from '../../helpers/validate';
 import { getDetailsToLogin } from '../../redux/slices/user-slice';
 
@@ -20,7 +20,8 @@ const SignupPage = (props) => {
   const [usernameError, setUsernameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [verificationEmail, setVerificationEmail] = useState();
+  const [verificationEmail, setVerificationEmail] = useState(false);
+  const [requestMade, setRequestMade] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ const SignupPage = (props) => {
   //validate username, password and email then pass the value to the endpoint
   function getUserInfo(e) {
     e.preventDefault();
-
+    setRequestMade(true);
     const enteredTextInput = textInput.current.value;
     const enteredEmailInput = emailInput.current.value;
     const enteredPasswordInput = passwordInput.current.value;
@@ -43,15 +44,17 @@ const SignupPage = (props) => {
 
     if (!validatedUsername) {
       setUsernameError(true);
+      setRequestMade(false);
     } else if (!validatedPassword) {
       setPassordError(true);
-      setUsernameError(false)
+      setUsernameError(false);
+      setRequestMade(false);
     } else if (!validatedEmail) {
       setEmailError(true);
-      setUsernameError(false)
-      setPassordError(false)
+      setUsernameError(false);
+      setPassordError(false);
+      setRequestMade(false);
     } else {
-      
       const enteredInfo = {
         username: enteredTextInput,
         password: enteredPasswordInput,
@@ -60,6 +63,8 @@ const SignupPage = (props) => {
       // admin or regular user
       if (props.adminAuth) {
         props.adminAuth(enteredInfo);
+        setRequestMade(false);
+
         return;
       } else {
         auth(enteredInfo);
@@ -75,30 +80,30 @@ const SignupPage = (props) => {
       if (res.status === 400) {
         const arrayKeys = [{ username: 1 }, { email: 1 }];
         const data = res.data.keyPattern;
-
-        if (
-          arrayKeys[0].username === data.username &&
+        if (arrayKeys[0].username === data.username) {
           toast.warn(
             `Username ${res.data.keyValue.username} is already in use.`
-          )
-        )
-          return;
-
-        toast.warn(`Email ${res.data.keyValue.email} is already in use`);
-        return;
+          );
+          setRequestMade(false);
+        } else {
+          toast.warn(`Email ${res.data.keyValue.email} is already in use`);
+          setRequestMade(false);
+        }
       } else if (res.data.message === 'Email verification failed to send') {
         toast.info(
           'Oops, something went wrong. Refresh the page and try again.'
         );
-        return;
+        setRequestMade(false);
       } else if (res.data.message === 'Email is already in use') {
+        setRequestMade(false);
+
         toast.info('Email has been used to register an account.');
-        return;
       } else {
         //if no error
         const userEmail = res.data.info.accepted[0];
         setVerificationEmail(userEmail);
         dispatch(getDetailsToLogin(enteredInfo));
+        setRequestMade(false);
       }
     });
   }
@@ -117,13 +122,7 @@ const SignupPage = (props) => {
           Username
         </label>
         <div className={`input-wrapper ${usernameError && 'error'}`}>
-          <input
-            type='text'
-            name='username'
-            id='username'
-            ref={textInput}
-            
-          />
+          <input type='text' name='username' id='username' ref={textInput} />
         </div>
         <span className='error-msg'>
           {usernameError &&
@@ -140,7 +139,6 @@ const SignupPage = (props) => {
             name='password'
             id='password'
             ref={passwordInput}
-            
           />
 
           <button
@@ -162,13 +160,7 @@ const SignupPage = (props) => {
           Email
         </label>
         <div className={`input-wrapper ${emailError && 'error'}`}>
-          <input
-            type='email'
-            name='email'
-            id='email'
-            ref={emailInput}
-            
-          />
+          <input type='email' name='email' id='email' ref={emailInput} />
         </div>
         <span className='error-msg'>
           {emailError &&
@@ -201,7 +193,7 @@ const SignupPage = (props) => {
           <article className='verify-msg-container'>
             <h3>Please check your email.</h3>
             <h4>
-              We have sent you a link in your email to confirm your account.
+              We have sent you a link in your email to verify your account.
             </h4>
           </article>
         </Modal>
@@ -213,6 +205,9 @@ const SignupPage = (props) => {
           }}
         />
       )}
+      {requestMade && <Backdrop > 
+        <div className='loader loader-backdrop' />
+        </Backdrop>}
     </div>
   );
 };

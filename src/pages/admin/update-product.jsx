@@ -48,7 +48,7 @@ const UpdateProduct = (props) => {
             setPrice();
             setTitle();
             setCategory();
-            toast.success('Product created successfully.');
+            toast.success('Product updated successfully, refresh to see the changes.');
             navigate('/');
           } else {
             toast.error('Something went wrong, we are working on it.');

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import arrowLeftSvg from '../assets/svg/arrowleft.svg';
+import { BackArrow } from '../assets/svg';
 import { searchProduct } from '../helpers/api-calls';
 import ProductsList from '../pages/home/products/products-list';
 import { setIsLoading } from '../redux/slices/product-slice';
@@ -33,8 +33,10 @@ const SearchResult = (props) => {
   return (
     <>
       <button onClick={props.onClick} className='back-btn'>
-        <img src={arrowLeftSvg} alt=' navigate back arrow' />
+        <BackArrow />
+        <span>
         Go back
+        </span>
       </button>
       {isProduct ? (
         <ProductsList products={products} />

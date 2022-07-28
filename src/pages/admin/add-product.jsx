@@ -45,7 +45,9 @@ const AddProduct = () => {
           setPrice();
           setTitle();
           setCategory();
-          toast.success('Product created successfully.');
+          toast.success(
+            'Product created successfully, refresh to see the changes.'
+          );
           navigate('/');
         } else {
           toast.error('Something went wrong, we are working on it.');

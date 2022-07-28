@@ -12,6 +12,7 @@ const OrderConfirmation = (props) => {
 
   useEffect(() => {
     getOrder(_id, config).then((res) => {
+      console.log(res);
       const details = [res.data];
       setOrderDetails(details);
     });

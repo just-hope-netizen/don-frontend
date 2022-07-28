@@ -58,7 +58,6 @@
   }
    .modal{
     left: 10%;
-    top: 20%;
   }
 }
 
@@ -217,6 +216,7 @@
   .form-btn,
   .modify-btn {
     max-width: 100%;
+    font-size: 12px;
   }
 
   .delivery-footer {
@@ -250,6 +250,7 @@
     right: 20px;
   }
   .user-account-container.mobile,
+  .orders-details,
   .edit-details-container,
   .products-container,
   .add-product-container,
@@ -279,6 +280,7 @@
     margin: 0;
     background-color: #fff;
     z-index: 1;
+    font-size: 11px;
   }
   .main {
     padding-top: 0 !important;

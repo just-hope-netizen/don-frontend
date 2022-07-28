@@ -118,3 +118,8 @@ a{
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+.loader-backdrop{
+  position: absolute;
+  top: calc((100% - 50px) / 2 - 90px);
+  right: calc((100% - 50px) / 2 );
+}

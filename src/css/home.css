@@ -89,11 +89,15 @@
 .back-btn {
   display: flex;
   align-items: center;
-  background-color: orangered;
+  background-color: grey;
   padding: 10px 20px;
   border-radius: 15px;
   color: #fff;
   margin-bottom: 20px;
+}
+.back-btn span{
+  display: contents;
+  height: 29px;
 }
 
 .category1-price,

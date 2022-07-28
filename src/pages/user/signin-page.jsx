@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { BackArrow, EyeIcon, EyeOffIcon } from '../../assets/svg';
+import Backdrop from '../../components/backdrop';
 
 import { login } from '../../helpers/api-calls';
 import { checkPassword, validateEmail } from '../../helpers/validate';
@@ -12,6 +13,7 @@ const SigninPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [passordError, setPassordError] = useState(false);
+  const [requestMade, setRequestMade] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,6 +23,7 @@ const SigninPage = () => {
 
   function getUserInfo(e) {
     e.preventDefault();
+    setRequestMade(true);
 
     //get each user input
     const enteredEmailInput = emailInput.current.value;
@@ -35,22 +38,28 @@ const SigninPage = () => {
     const validatedEmail = validateEmail(email);
     if (!validatedEmail) {
       setEmailError(true);
+      setRequestMade(false);
     } else if (!validatedPassword) {
       setPassordError(true);
       setEmailError(false);
+      setRequestMade(false);
     } else {
+      setPassordError(false);
+      setEmailError(false);
       login(email, password).then((res) => {
-        console.log(res);
         if (res.data.msg === 'user not found') {
           toast.info('Account not registered');
-        }else if (
+          setRequestMade(false);
+        } else if (
           res.data.msg ===
           'password does not match the one stored in the database'
         ) {
-          toast.error('Wrong password')
+          toast.error('Wrong password');
+          setRequestMade(false);
         } else if (res.data.msg === 'user is not verified') {
           toast.info('user is not verified');
-        }else{
+          setRequestMade(false);
+        } else {
           toast.success(`welcome ${res.data.username}`);
           navigate('/'); //navigate after login
           dispatch(getUser(res.data));
@@ -117,6 +126,11 @@ const SigninPage = () => {
           Sign Up
         </Link>{' '}
       </h4>
+      {requestMade && (
+        <Backdrop>
+          <div className='loader loader-backdrop' />
+        </Backdrop>
+      )}
     </div>
   );
 };

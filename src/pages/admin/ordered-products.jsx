@@ -6,6 +6,9 @@ import OrderDetails from '../user/profile/orders/order-details';
 
 const OrderedProducts = () => {
   const [orders, setOrders] = useState([]);
+  const [isOrder, setIsOrder] = useState();
+  const [loading, setLoading] = useState(true);
+
   const { _id, config } = useSelector((store) => store.persistedReducer.user);
 
   useEffect(() => {
@@ -13,8 +16,14 @@ const OrderedProducts = () => {
     getOrders(config).then((res) => {
       // if no order return
       const length = Object.keys(res.data).length;
-      if (length <= 0) return;
-      setOrders(res.data);
+      if (length <= 0) {
+        setIsOrder(false);
+        setLoading(false);
+      } else {
+        setIsOrder(true);
+        setOrders(res.data);
+        setLoading(false);
+      }
     });
   }, [_id, config]);
 
@@ -22,7 +31,13 @@ const OrderedProducts = () => {
     <article className='orders-container'>
       <OrderHeader />
       <span className='line-break'></span>
-      <OrderDetails orders={orders} />
+      {loading ? (
+        <div className='loader' />
+      ) : isOrder ? (
+        <OrderDetails orders={orders} />
+      ) : (
+        <h3 className='no-order'>No order currently.</h3>
+      )}
     </article>
   );
 };
