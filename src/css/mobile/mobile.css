@@ -92,7 +92,9 @@
   .card-item.mobile{
     width: 33.3% ;
   }
-  
+  .menu-logo{
+    width: 60px;
+  }
   .category-nav-item-list {
     border-bottom: none !important;
   }
