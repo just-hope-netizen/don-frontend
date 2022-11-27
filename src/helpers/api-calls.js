@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // const backendHost = 'http://localhost:2000/'
-const backendHost = 'https://don-remolo-server.herokuapp.com/'
+const backendHost = 'https://web-production-5720.up.railway.app/'
 
 //auth and verify
 export async function register(data) {
@@ -28,7 +28,7 @@ export async function login(email, password) {
       email,
       password,
     });
-  
+
     return res;
   } catch (err) {
     return err.response
@@ -53,22 +53,22 @@ export async function verifyToken(user, config) {
 
 //products
 export async function getProducts() {
-    try {
-      const res = await axios.get(`${backendHost}products`);
-      return res;
-    } catch (err) {
-      return err.response
-    }
-  
+  try {
+    const res = await axios.get(`${backendHost}products`);
+    return res;
+  } catch (err) {
+    return err.response
+  }
+
 }
 export async function searchProduct(data) {
-    try {
-      const res = await axios.get(`${backendHost}products?product=${data}`);
-      return res;
-    } catch (err) {
-      return err.response
-    }
-  
+  try {
+    const res = await axios.get(`${backendHost}products?product=${data}`);
+    return res;
+  } catch (err) {
+    return err.response
+  }
+
 }
 
 export async function findProduct(productId) {
@@ -82,7 +82,7 @@ export async function findProduct(productId) {
 
 export async function updateProduct(productId, data, config) {
   try {
-    const res = await axios.put(`${backendHost}products/${productId}`, data , config);
+    const res = await axios.put(`${backendHost}products/${productId}`, data, config);
     return res
   } catch (err) {
     return err.response
@@ -172,22 +172,22 @@ export async function deleteOrder(orderId, userId, config) {
 
 // user
 export async function deleteUserAccount(userId, headers) {
-    try {
-    const res =  await axios.delete(`${backendHost}users/${userId}`, headers);
+  try {
+    const res = await axios.delete(`${backendHost}users/${userId}`, headers);
     return res
-    } catch (err) {
-      return err.response;
-    }
-  
+  } catch (err) {
+    return err.response;
+  }
+
 }
 
 export async function editProfile(userId, data, config) {
-    try {
-    const res =  await axios.put(`${backendHost}users/${userId}`, data, config);
+  try {
+    const res = await axios.put(`${backendHost}users/${userId}`, data, config);
     return res
-    } catch (err) {
-      return err.response
-    }
-  
+  } catch (err) {
+    return err.response
+  }
+
 }
 
