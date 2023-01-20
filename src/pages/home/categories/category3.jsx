@@ -12,7 +12,7 @@ const Category3 = () => {
 
   useEffect(() => {
     // for caching
-    if (drink.length > 0) {
+    if (drink !== null) {
       return;
     } else {
       getProductByCategory('drink').then((res) => {
@@ -29,7 +29,7 @@ const Category3 = () => {
 
   return (
     <div>
-        <ProductsList products={drink} />
+      <ProductsList products={drink} />
     </div>
   );
 };

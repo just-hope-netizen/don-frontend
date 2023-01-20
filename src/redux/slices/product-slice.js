@@ -3,10 +3,10 @@ const initialState = {
   isLoading: true,
   query: null,
   products: {
-    pizza: [],
-    empanda: [],
-    drink: [],
-    dessert: []
+    pizza: null,
+    empanda: null,
+    drink: null,
+    dessert: null
   }
 };
 
@@ -32,9 +32,9 @@ const productSlice = createSlice({
         state.products.pizza = action.payload
       } else if (category === 'empanda') {
         state.products.empanda = action.payload
-      } else if (category === 'drink'){
+      } else if (category === 'drink') {
         state.products.drink = action.payload
-      }else {
+      } else {
         state.products.dessert = action.payload
       }
     }
