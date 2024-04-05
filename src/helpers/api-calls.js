@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // const backendHost = 'http://localhost:2000/'
-const backendHost = 'https://don-backend-production.up.railway.app/'
+const backendHost = 'https://don-backend-zyqg.onrender.com/'
 
 //auth and verify
 export async function register(data) {
